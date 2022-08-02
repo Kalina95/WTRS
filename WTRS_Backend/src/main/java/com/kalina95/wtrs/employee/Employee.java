@@ -5,6 +5,7 @@ import com.kalina95.wtrs.task.Task;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
 
 import javax.persistence.*;
@@ -14,18 +15,20 @@ import java.util.Set;
 
 @Builder
 @Entity
+@Table(name = "employees")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employee{
+public class Employee {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int employeeId;
 
     @NonNull
-    private int pesel;
+    private String pesel;
     @NonNull
     private String firstName;
 
@@ -38,7 +41,8 @@ public class Employee{
 
     private double grossSalary;
 
-    @OneToMany(cascade=CascadeType.ALL, mappedBy = "employee",orphanRemoval = true)
+    @Column(name = "tasks")
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.REMOVE)
     private Set<Task> tasks;
 
 }

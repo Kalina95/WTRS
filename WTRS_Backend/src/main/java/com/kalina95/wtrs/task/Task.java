@@ -1,11 +1,9 @@
 package com.kalina95.wtrs.task;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kalina95.wtrs.employee.Employee;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
@@ -15,8 +13,9 @@ import java.util.Date;
 
 @Builder
 @Entity
-@Table(name = "employee")
+@Table(name = "tasks")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Task {
@@ -28,11 +27,11 @@ public class Task {
     @NonNull
     private String name;
 
-    @DateTimeFormat(pattern="dd/MM/yyyy")
-    private Date startDate;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date startOfTask;
 
-    @DateTimeFormat(pattern="dd/MM/yyyy")
-    private Date endDate;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date endOfTask;
 
     @ManyToOne
     private Employee employee;
