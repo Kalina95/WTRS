@@ -1,8 +1,7 @@
 package com.kalina95.wtrs.employee;
 
-
-import com.kalina95.wtrs.task.Task;
 import com.kalina95.wtrs.user.User;
+import com.kalina95.wtrs.task.Task;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;

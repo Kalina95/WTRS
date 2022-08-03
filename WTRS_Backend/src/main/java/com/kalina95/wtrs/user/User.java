@@ -4,7 +4,6 @@ package com.kalina95.wtrs.user;
 import com.kalina95.wtrs.employee.Employee;
 import lombok.*;
 import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
