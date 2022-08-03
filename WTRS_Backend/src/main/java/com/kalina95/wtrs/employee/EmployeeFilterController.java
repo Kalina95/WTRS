@@ -1,6 +1,5 @@
-package com.kalina95.wtrs.filter;
+package com.kalina95.wtrs.employee;
 
-import com.kalina95.wtrs.employee.Employee;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,15 +9,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
+
 @RestController
 @RequestMapping(value = "/employee")
 @RequiredArgsConstructor
+public class EmployeeFilterController {
 
-public class FilterController {
-    private final FilterService service;
+    private final EmployeeFilter service;
 
     @GetMapping("/filter")
-    public ResponseEntity<List<Employee>> filter(){
-        return new ResponseEntity<>(service.filterByParam(), HttpStatus.OK);
+    public ResponseEntity<List<Employee>> getAll(){
+        return new ResponseEntity<>(service.filter(), HttpStatus.OK);
     }
 }
+
+
+
+
+
+
