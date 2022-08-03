@@ -12,15 +12,15 @@ public class EmployeeService {
 
     private final EmployeeRepository repository;
 
-    public List<EmployeeDTO> getAll(){
-        List<EmployeeDTO> listWithDTOs = repository.findAll().stream()
-                .map(EmployeeDTO::new)
+    public List<EmployeeDto> getAll(){
+        List<EmployeeDto> listWithDTOs = repository.findAll().stream()
+                .map(EmployeeDto::new)
                 .collect(Collectors.toList());
         return listWithDTOs;
     }
 
-    public EmployeeDTO getById(int id){
-        EmployeeDTO employeeDTO = new EmployeeDTO(repository.findById(id).orElseThrow(RuntimeException::new));
+    public EmployeeDto getById(int id){
+        EmployeeDto employeeDTO = new EmployeeDto(repository.findById(id).orElseThrow(RuntimeException::new));
         return employeeDTO;
     }
 

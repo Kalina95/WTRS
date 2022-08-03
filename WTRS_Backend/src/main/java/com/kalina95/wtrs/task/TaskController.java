@@ -1,7 +1,6 @@
 package com.kalina95.wtrs.task;
 
 
-import com.kalina95.wtrs.employee.Employee;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +16,13 @@ public class TaskController {
     private final TaskService service;
 
     @GetMapping("/")
-    public ResponseEntity<List<TaskDTO>> getAll(){
-        return new ResponseEntity<List<TaskDTO>>(service.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<TaskDto>> getAll(){
+        return new ResponseEntity<List<TaskDto>>(service.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TaskDTO> getById(@PathVariable(name = "id") int id){
-        return new ResponseEntity<TaskDTO>(service.getById(id), HttpStatus.OK);
+    public ResponseEntity<TaskDto> getById(@PathVariable(name = "id") int id){
+        return new ResponseEntity<TaskDto>(service.getById(id), HttpStatus.OK);
     }
 
 

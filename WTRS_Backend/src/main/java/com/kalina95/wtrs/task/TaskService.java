@@ -12,13 +12,13 @@ public class TaskService {
 
     private final TaskRepository repository;
 
-    public List<TaskDTO> getAll(){
-        List<TaskDTO> listOfDTOs = repository.findAll().stream().map(TaskDTO::new).collect(Collectors.toList());
+    public List<TaskDto> getAll(){
+        List<TaskDto> listOfDTOs = repository.findAll().stream().map(TaskDto::new).collect(Collectors.toList());
         return listOfDTOs;
     }
 
-    public TaskDTO getById(int id){
-        TaskDTO taskDTO = new TaskDTO(repository.findById(id).orElseThrow(RuntimeException::new));
+    public TaskDto getById(int id){
+        TaskDto taskDTO = new TaskDto(repository.findById(id).orElseThrow(RuntimeException::new));
         return taskDTO;
     }
 

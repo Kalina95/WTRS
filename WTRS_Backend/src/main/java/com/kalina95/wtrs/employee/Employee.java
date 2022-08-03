@@ -2,6 +2,7 @@ package com.kalina95.wtrs.employee;
 
 
 import com.kalina95.wtrs.task.Task;
+import com.kalina95.wtrs.user.User;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
@@ -42,7 +43,11 @@ public class Employee {
     private double grossSalary;
 
     @Column(name = "tasks")
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Task> tasks;
+
+    @OneToOne(mappedBy = "employee")
+    private User user;
+
 
 }

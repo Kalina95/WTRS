@@ -15,13 +15,13 @@ public class EmployeeController {
     private final EmployeeService service;
 
     @GetMapping("/")
-    public ResponseEntity<List<EmployeeDTO>> getAll(){
-        return new ResponseEntity<List<EmployeeDTO>>(service.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<EmployeeDto>> getAll(){
+        return new ResponseEntity<List<EmployeeDto>>(service.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EmployeeDTO> getById(@PathVariable(name = "id") int id){
-        return new ResponseEntity<EmployeeDTO>(service.getById(id), HttpStatus.OK);
+    public ResponseEntity<EmployeeDto> getById(@PathVariable(name = "id") int id){
+        return new ResponseEntity<EmployeeDto>(service.getById(id), HttpStatus.OK);
     }
 
 

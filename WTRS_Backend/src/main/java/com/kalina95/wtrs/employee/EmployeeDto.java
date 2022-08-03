@@ -4,7 +4,7 @@ import lombok.Getter;
 import java.util.Date;
 
 @Getter
-public class EmployeeDTO {
+public class EmployeeDto {
 
     private final String pesel;
     private final String firstName;
@@ -13,7 +13,7 @@ public class EmployeeDTO {
     private final Date birthDay;
     private final double grossSalary;
 
-    public EmployeeDTO(Employee employee){
+    public EmployeeDto(Employee employee){
         this.pesel = employee.getPesel();
         this.firstName = employee.getFirstName();
         this.secondName = employee.getSecondName();
