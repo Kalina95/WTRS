@@ -1,6 +1,6 @@
 package com.kalina95.wtrs.employee;
 
-import org.hibernate.Session;
+import com.google.common.base.Strings;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -11,21 +11,26 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
-public class EmployeeFilter {
+public class EmployeeFilterService {
 
     @PersistenceContext
     EntityManager entityManager;
 
-    public List<Employee> filter(){
+    public List<Employee> filter(Map<String,String> parameters) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Employee> criteriaQuery = criteriaBuilder.createQuery(Employee.class);
         Root<Employee> employeeRoot = criteriaQuery.from(Employee.class);
 
-        Predicate predicate = criteriaBuilder.equal(employeeRoot.get("firstName"), "Władysław");
+        List<Predicate> listOfPredicates = parameters.keySet().stream()
+                .filter( key -> !Strings.isNullOrEmpty(parameters.get(key)))
+                .map( key -> criteriaBuilder.equal(employeeRoot.get(key), parameters.get(key)))
+                .collect(Collectors.toList());
 
-        criteriaQuery.select(employeeRoot).where(predicate);
+        criteriaQuery.select(employeeRoot).where(criteriaBuilder.and(listOfPredicates.toArray(Predicate[]::new)));
 
         TypedQuery<Employee> typedQuery = entityManager.createQuery(criteriaQuery);
         List<Employee> employees = typedQuery.getResultList();
