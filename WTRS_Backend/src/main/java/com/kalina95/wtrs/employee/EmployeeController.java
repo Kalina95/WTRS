@@ -16,23 +16,23 @@ public class EmployeeController {
 
     @GetMapping("/")
     public ResponseEntity<List<EmployeeDto>> getAll(){
-        return new ResponseEntity<List<EmployeeDto>>(service.getAll(), HttpStatus.OK);
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<EmployeeDto> getById(@PathVariable(name = "id") int id){
-        return new ResponseEntity<EmployeeDto>(service.getById(id), HttpStatus.OK);
+        return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
 
 
     @PostMapping("/")
     public ResponseEntity<Integer> post(@RequestBody Employee employee){
-        return new ResponseEntity<Integer>(service.create(employee), HttpStatus.CREATED);
+        return new ResponseEntity<>(service.create(employee), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Integer> put(@RequestBody Employee employee, @PathVariable(name = "id") int id){
-        return new ResponseEntity<Integer>(service.update(id, employee), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(service.update(id, employee), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{id}")

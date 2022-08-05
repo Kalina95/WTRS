@@ -17,22 +17,22 @@ public class UserController {
 
     @GetMapping("/")
     public ResponseEntity<List<UserDto>> getAll(){
-        return new ResponseEntity<List<UserDto>>(service.getAll(), HttpStatus.OK);
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getById(@PathVariable(name = "id") int id){
-        return new ResponseEntity<UserDto>(service.getById(id), HttpStatus.OK);
+        return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
 
     @PostMapping("/")
     public ResponseEntity<Integer> post(@RequestBody User user){
-        return new ResponseEntity<Integer>(service.create(user), HttpStatus.CREATED);
+        return new ResponseEntity<>(service.create(user), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Integer> put(@RequestBody User user, @PathVariable(name = "id") int id){
-        return new ResponseEntity<Integer>(service.update(id, user), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(service.update(id, user), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{id}")

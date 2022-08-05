@@ -1,8 +1,9 @@
 package com.kalina95.wtrs.user;
 
 import com.kalina95.wtrs.employee.Employee;
+import lombok.Getter;
 
-
+@Getter
 public class UserDto {
 
     private String login;

@@ -12,10 +12,13 @@ public class TaskDto {
     private final Date endOfTask;
     private final Employee employee;
 
+
+
     public TaskDto(Task task){
         this.name = task.getName();
         this.startOfTask = task.getStartOfTask();
         this.endOfTask = task.getEndOfTask();
         this.employee = task.getEmployee();
+
     }
 }
