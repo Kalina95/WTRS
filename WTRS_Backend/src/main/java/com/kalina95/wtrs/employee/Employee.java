@@ -1,5 +1,6 @@
 package com.kalina95.wtrs.employee;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kalina95.wtrs.EmployeeTaskAssignment.EmployeeTaskAssignment;
 import com.kalina95.wtrs.user.User;
 import com.kalina95.wtrs.task.Task;
@@ -37,7 +38,7 @@ public class Employee {
     @NonNull
     private String lastName;
 
-    @DateTimeFormat(pattern="dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date birthDay;
 
     private double grossSalary;

@@ -20,6 +20,9 @@ public class TaskDto {
         this.name = task.getName();
         this.startOfTask = task.getStartOfTask();
         this.endOfTask = task.getEndOfTask();
+        this.hoursForTask = task.getHoursForTask();
+        this.allReportedHours = task.getAllReportedHours();
+        this.isDone = task.isDone();
 
     }
 }

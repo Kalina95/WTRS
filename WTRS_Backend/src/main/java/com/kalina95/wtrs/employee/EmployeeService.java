@@ -32,7 +32,6 @@ public class EmployeeService {
     }
 
     public int update(int id, Employee employee){
-        employee.setEmployeeId(id);
         repository.save(employee);
         return employee.getEmployeeId();
     }
@@ -40,6 +39,10 @@ public class EmployeeService {
     public void delete(int id){
         repository.delete(repository.findById(id).orElseThrow(RuntimeException::new));
     }
+
+
+
+
 
 
 
