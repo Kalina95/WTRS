@@ -9,10 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
-
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
 
 
 @RestController
@@ -28,14 +24,16 @@ public class EmployeeFilterController {
             @RequestParam(required = false, name = "secondName") String secondName,
             @RequestParam(required = false, name = "lastName") String lastName
 
-    ){
+    ) {
 
-        Map<String, String> mapOfParams = newHashMap();
-        mapOfParams.put("firstName", firstName);
-        mapOfParams.put("secondName", secondName);
-        mapOfParams.put("lastName", lastName);
+        EmployeeFilterParameter employeeFilterParameter = EmployeeFilterParameter.builder()
+                .firstName(firstName)
+                .secondName(secondName)
+                .lastName(lastName)
+                .build();
 
-        return new ResponseEntity<>(service.filter(mapOfParams), HttpStatus.OK);
+
+        return new ResponseEntity<>(service.filter(employeeFilterParameter), HttpStatus.OK);
     }
 }
 

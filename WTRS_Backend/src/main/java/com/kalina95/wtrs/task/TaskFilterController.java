@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,13 +24,18 @@ public class TaskFilterController {
         @GetMapping("/filter/")
         public ResponseEntity<List<Task>> getAll(
                 @RequestParam(required = false, name = "name") String name,
-                @RequestParam(required = false, name = "taskId") String taskId
+                @RequestParam(required = false, name = "taskId") int taskId,
+                @RequestParam(required = false, name = "startOfTask") Date startOfTask,
+                @RequestParam(required = false, name = "endOfTask") Date endOfTask
         ){
 
-            Map<String,String> parameters = new HashMap<>();
+            TaskFilterParameter parameters = TaskFilterParameter.builder()
+                    .name(name)
+                    .taskid(taskId)
+                    .startOfTask(startOfTask)
+                    .endOfTask(endOfTask)
+                    .build();
 
-            parameters.put("name", name);
-            parameters.put("taskId", taskId);
 
             return new ResponseEntity<>(service.filter(parameters), HttpStatus.OK);
         }

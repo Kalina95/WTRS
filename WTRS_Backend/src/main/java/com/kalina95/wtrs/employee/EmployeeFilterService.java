@@ -20,7 +20,10 @@ public class EmployeeFilterService {
     @PersistenceContext
     EntityManager entityManager;
 
-    public List<Employee> filter(Map<String,String> parameters) {
+    public List<Employee> filter(EmployeeFilterParameter employeeFilterParameter) {
+
+        Map<String, String> parameters = employeeFilterParameter.parametersToMap();
+
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Employee> criteriaQuery = criteriaBuilder.createQuery(Employee.class);
         Root<Employee> employeeRoot = criteriaQuery.from(Employee.class);

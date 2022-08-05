@@ -22,12 +22,17 @@ public class UserFilterController {
 
     @GetMapping("/filter")
     public ResponseEntity<List<User>> getAll(
+            @RequestParam(required = false, name = "userId") int userId,
+            @RequestParam(required = false, name = "login") String login,
             @RequestParam(required = false, name = "role") String role
     ){
 
-        Map<String, String> parameters = new HashMap<>();
+        UserFilterParameter parameters = UserFilterParameter.builder()
+                .userId(userId)
+                .login(login)
+                .role(role)
+                .build();
 
-        parameters.put("role", role);
 
         return new ResponseEntity<>(service.filter(parameters), HttpStatus.OK);
     }

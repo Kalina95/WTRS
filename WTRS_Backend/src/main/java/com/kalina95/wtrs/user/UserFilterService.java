@@ -18,7 +18,9 @@ public class UserFilterService {
     @PersistenceContext
     EntityManager entityManager;
 
-    public List<User> filter(Map<String, String> parameters) {
+    public List<User> filter(UserFilterParameter userFilterParameter) {
+
+        Map<String, String> parameters = userFilterParameter.parametersToMap();
 
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
