@@ -10,7 +10,9 @@ public class TaskDto {
     private final String name;
     private final Date startOfTask;
     private final Date endOfTask;
-    private final Employee employee;
+    private int hoursForTask;
+    private int allReportedHours;
+    private boolean isDone;
 
 
 
@@ -18,7 +20,6 @@ public class TaskDto {
         this.name = task.getName();
         this.startOfTask = task.getStartOfTask();
         this.endOfTask = task.getEndOfTask();
-        this.employee = task.getEmployee();
 
     }
 }

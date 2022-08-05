@@ -12,6 +12,8 @@ public class EmployeeDto {
     private final String lastName;
     private final Date birthDay;
     private final double grossSalary;
+    private String companyRole;
+    private int managerId;
 
     public EmployeeDto(Employee employee){
         this.pesel = employee.getPesel();
@@ -20,5 +22,7 @@ public class EmployeeDto {
         this.lastName = employee.getLastName();
         this.birthDay = employee.getBirthDay();
         this.grossSalary = employee.getGrossSalary();
+        this.companyRole = employee.getCompanyRole().name();
+        this.managerId = employee.getManager().getEmployeeId();
     }
 }
