@@ -22,7 +22,7 @@ public class TaskFilterService {
 
     public List<Task> filter(TaskFilterParameter taskFilterParameter) {
 
-        Map<String, String> parameters = taskFilterParameter.parametersToMap();
+        Map<String, ?> parameters = taskFilterParameter.parametersToMap();
 
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Task> criteriaQuery = criteriaBuilder.createQuery(Task.class);
@@ -30,7 +30,7 @@ public class TaskFilterService {
 
         List<Predicate> predicates = parameters.keySet()
                 .stream()
-                .filter(key -> !Strings.isNullOrEmpty((parameters.get(key))))
+                .filter(key -> parameters.get(key)!=null)
                 .map(key -> criteriaBuilder.equal(taskRoot.get(key), parameters.get(key)))
                 .collect(Collectors.toList());
 

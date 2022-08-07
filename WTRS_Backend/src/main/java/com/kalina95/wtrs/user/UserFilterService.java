@@ -20,7 +20,7 @@ public class UserFilterService {
 
     public List<User> filter(UserFilterParameter userFilterParameter) {
 
-        Map<String, String> parameters = userFilterParameter.parametersToMap();
+        Map<String, ?> parameters = userFilterParameter.parametersToMap();
 
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
@@ -28,6 +28,7 @@ public class UserFilterService {
 
         List<Predicate> listOfPredicates = parameters.keySet()
                 .stream()
+                .filter(key -> parameters.get(key)!=null)
                 .map(key -> criteriaBuilder.equal(userRoot.get(key), parameters.get(key)))
                 .toList();
 

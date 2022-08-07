@@ -10,7 +10,7 @@ public class UserInitializer {
         User admin = User.builder()
                 .login("admin")
                 .password(encoder.encode("admin"))
-                .role("ADMIN")
+                .role(SystemRole.ROLE_ADMIN)
                 .build();
 
         repository.save(admin);

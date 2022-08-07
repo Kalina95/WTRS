@@ -22,14 +22,14 @@ public class EmployeeFilterService {
 
     public List<Employee> filter(EmployeeFilterParameter employeeFilterParameter) {
 
-        Map<String, String> parameters = employeeFilterParameter.parametersToMap();
+        Map<String, ?> parameters = employeeFilterParameter.parametersToMap();
 
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Employee> criteriaQuery = criteriaBuilder.createQuery(Employee.class);
         Root<Employee> employeeRoot = criteriaQuery.from(Employee.class);
 
         List<Predicate> listOfPredicates = parameters.keySet().stream()
-                .filter( key -> !Strings.isNullOrEmpty(parameters.get(key)))
+                .filter( key -> parameters.get(key)!=null)
                 .map( key -> criteriaBuilder.equal(employeeRoot.get(key), parameters.get(key)))
                 .collect(Collectors.toList());
 

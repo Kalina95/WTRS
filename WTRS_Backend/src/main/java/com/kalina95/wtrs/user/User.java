@@ -24,7 +24,7 @@ public class User {
     @NonNull
     private String password;
     @NonNull
-    private String role;
+    private SystemRole role;
     @OneToOne
     private Employee employee;
 

@@ -15,17 +15,16 @@ import java.util.Map;
 @Builder
 public class UserFilterParameter {
 
-    private int userId;
+
     private String login;
     private String password;
-    private String role;
+    private SystemRole role;
     private Employee employee;
 
-    public Map<String, String> parametersToMap(){
-        Map<String, String> parameters = new HashMap<>();
-        parameters.put("userId", String.valueOf(userId));
-        parameters.put("login", String.valueOf(login));
-        parameters.put("role", String.valueOf(role));
+    public Map<String, ?> parametersToMap(){
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("login", login);
+        parameters.put("role", role);
         return parameters;
     }
 
