@@ -19,18 +19,16 @@ public class EmployeeFilterParameter {
     private String secondName;
     private String lastName;
     private Date birthDay;
-    private double grossSalary;
-    private Set<Task> tasks;
-    private User user;
+    private Double grossSalary;
 
-    public Map<String, String> parametersToMap(){
-        Map<String, String> parameters = new HashMap<>();
+    public Map<String, ?> parametersToMap(){
+        Map<String, Object> parameters = new HashMap<>();
         parameters.put("pesel", this.pesel);
         parameters.put("firstName", this.firstName);
         parameters.put("secondName", this.secondName);
         parameters.put("lastName", this.lastName);
-        parameters.put("birthDay", this.birthDay.toString());
-        parameters.put("grossSalary", String.valueOf(this.grossSalary));
+        parameters.put("birthDay", this.birthDay);
+        parameters.put("grossSalary", this.grossSalary);
         return parameters;
     }
 }

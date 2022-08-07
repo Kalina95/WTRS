@@ -1,6 +1,7 @@
 package com.kalina95.wtrs.user;
 
 
+import com.kalina95.wtrs.Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,15 +23,13 @@ public class UserFilterController {
 
     @GetMapping("/filter")
     public ResponseEntity<List<User>> getAll(
-            @RequestParam(required = false, name = "userId") int userId,
             @RequestParam(required = false, name = "login") String login,
             @RequestParam(required = false, name = "role") String role
     ){
 
         UserFilterParameter parameters = UserFilterParameter.builder()
-                .userId(userId)
                 .login(login)
-                .role(role)
+                .role(new Utils().checkSystemRole(role))
                 .build();
 
 

@@ -10,18 +10,15 @@ import java.util.Map;
 @Builder
 public class TaskFilterParameter {
 
-    private int taskid;
     private String name;
     private Date startOfTask;
     private Date endOfTask;
-    private Employee employee;
 
-    public Map<String, String> parametersToMap(){
-        Map<String, String> parameters = new HashMap<>();
+    public Map<String, ?> parametersToMap(){
+        Map<String, Object> parameters = new HashMap<>();
         parameters.put("name", this.name);
-        parameters.put("taskId", String.valueOf(this.taskid));
-        parameters.put("startOfTask", this.startOfTask.toString());
-        parameters.put("endOfTask", this.endOfTask.toString());
+        parameters.put("startOfTask", this.startOfTask);
+        parameters.put("endOfTask", this.endOfTask);
         return parameters;
     }
 }

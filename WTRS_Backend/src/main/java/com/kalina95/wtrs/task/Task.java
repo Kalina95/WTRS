@@ -27,10 +27,10 @@ public class Task {
     @NonNull
     private String name;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss.SSSZ")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date startOfTask;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss.SSSZ")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date endOfTask;
 
     private int hoursForTask;

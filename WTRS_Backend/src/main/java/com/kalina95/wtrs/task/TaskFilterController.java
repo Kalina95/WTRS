@@ -1,5 +1,6 @@
 package com.kalina95.wtrs.task;
 
+import com.kalina95.wtrs.Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,16 +25,14 @@ public class TaskFilterController {
         @GetMapping("/filter/")
         public ResponseEntity<List<Task>> getAll(
                 @RequestParam(required = false, name = "name") String name,
-                @RequestParam(required = false, name = "taskId") int taskId,
-                @RequestParam(required = false, name = "startOfTask") Date startOfTask,
-                @RequestParam(required = false, name = "endOfTask") Date endOfTask
+                @RequestParam(required = false, name = "startOfTask") String startOfTask,
+                @RequestParam(required = false, name = "endOfTask") String endOfTask
         ){
 
             TaskFilterParameter parameters = TaskFilterParameter.builder()
                     .name(name)
-                    .taskid(taskId)
-                    .startOfTask(startOfTask)
-                    .endOfTask(endOfTask)
+                    .startOfTask(new Utils().stringToDateParser(startOfTask))
+                    .endOfTask(new Utils().stringToDateParser(endOfTask))
                     .build();
 
 

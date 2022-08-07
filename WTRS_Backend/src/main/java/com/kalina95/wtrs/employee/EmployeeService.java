@@ -27,6 +27,7 @@ public class EmployeeService {
 
     public int create(Employee employee){
         employee.setEmployeeId(0);
+
         repository.save(employee);
         return employee.getEmployeeId();
     }
