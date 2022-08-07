@@ -28,7 +28,7 @@ public class UserFilterService {
 
         List<Predicate> listOfPredicates = parameters.keySet()
                 .stream()
-                .filter(key -> parameters.get(key)!=null)
+                .filter(key -> parameters.get(key) != null)
                 .map(key -> criteriaBuilder.equal(userRoot.get(key), parameters.get(key)))
                 .toList();
 

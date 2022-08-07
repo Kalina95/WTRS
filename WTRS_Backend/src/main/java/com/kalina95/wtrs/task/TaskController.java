@@ -16,28 +16,28 @@ public class TaskController {
     private final TaskService service;
 
     @GetMapping("/")
-    public ResponseEntity<List<TaskDto>> getAll(){
+    public ResponseEntity<List<TaskDto>> getAll() {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TaskDto> getById(@PathVariable(name = "id") int id){
+    public ResponseEntity<TaskDto> getById(@PathVariable(name = "id") int id) {
         return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
 
 
     @PostMapping("/")
-    public ResponseEntity<Integer> post(@RequestBody Task task){
+    public ResponseEntity<Integer> post(@RequestBody Task task) {
         return new ResponseEntity<>(service.create(task), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Integer> put(@RequestBody Task task, @PathVariable(name = "id") int id){
+    public ResponseEntity<Integer> put(@RequestBody Task task, @PathVariable(name = "id") int id) {
         return new ResponseEntity<>(service.update(id, task), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable(name = "id") int id){
+    public ResponseEntity<?> delete(@PathVariable(name = "id") int id) {
         service.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

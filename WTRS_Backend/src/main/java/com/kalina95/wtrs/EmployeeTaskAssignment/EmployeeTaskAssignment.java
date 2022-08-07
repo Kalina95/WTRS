@@ -2,7 +2,6 @@ package com.kalina95.wtrs.EmployeeTaskAssignment;
 
 import com.kalina95.wtrs.employee.Employee;
 import com.kalina95.wtrs.task.Task;
-import jdk.jfr.Enabled;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,7 +26,6 @@ public class EmployeeTaskAssignment {
     @ManyToOne
     @JoinColumn(name = "taskId")
     Task task;
-
 
 
 }

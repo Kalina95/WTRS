@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/user")
@@ -25,7 +23,7 @@ public class UserFilterController {
     public ResponseEntity<List<User>> getAll(
             @RequestParam(required = false, name = "login") String login,
             @RequestParam(required = false, name = "role") String role
-    ){
+    ) {
 
         UserFilterParameter parameters = UserFilterParameter.builder()
                 .login(login)

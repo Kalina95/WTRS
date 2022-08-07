@@ -10,7 +10,7 @@ public class UserDto {
     private String password;
     private Employee employee;
 
-    public UserDto(User user){
+    public UserDto(User user) {
         this.login = user.getLogin();
         this.password = user.getPassword();
         this.employee = user.getEmployee();

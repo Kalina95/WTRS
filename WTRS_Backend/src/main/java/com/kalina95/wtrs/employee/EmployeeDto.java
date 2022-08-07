@@ -1,13 +1,8 @@
 package com.kalina95.wtrs.employee;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.util.Optional;
-
-import static com.google.common.base.Strings.isNullOrEmpty;
 
 @Getter
 public class EmployeeDto {
@@ -24,7 +19,7 @@ public class EmployeeDto {
     private String managerFirstName;
     private String managerLastName;
 
-    public EmployeeDto(Employee employee){
+    public EmployeeDto(Employee employee) {
         this.pesel = employee.getPesel();
         this.firstName = employee.getFirstName();
         this.secondName = employee.getSecondName();
@@ -36,8 +31,8 @@ public class EmployeeDto {
         checkIfManagerExists();
     }
 
-    private void checkIfManagerExists(){
-        if(manager!=null){
+    private void checkIfManagerExists() {
+        if (manager != null) {
             managerId = manager.getEmployeeId();
             managerFirstName = manager.getFirstName();
             managerLastName = manager.getLastName();

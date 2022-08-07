@@ -1,6 +1,5 @@
 package com.kalina95.wtrs.employee;
 
-import com.google.common.base.Strings;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -29,8 +28,8 @@ public class EmployeeFilterService {
         Root<Employee> employeeRoot = criteriaQuery.from(Employee.class);
 
         List<Predicate> listOfPredicates = parameters.keySet().stream()
-                .filter( key -> parameters.get(key)!=null)
-                .map( key -> criteriaBuilder.equal(employeeRoot.get(key), parameters.get(key)))
+                .filter(key -> parameters.get(key) != null)
+                .map(key -> criteriaBuilder.equal(employeeRoot.get(key), parameters.get(key)))
                 .collect(Collectors.toList());
 
         criteriaQuery.select(employeeRoot).where(criteriaBuilder.and(listOfPredicates.toArray(Predicate[]::new)));

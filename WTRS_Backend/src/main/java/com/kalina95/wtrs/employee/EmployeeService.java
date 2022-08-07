@@ -12,39 +12,34 @@ public class EmployeeService {
 
     private final EmployeeRepository repository;
 
-    public List<EmployeeDto> getAll(){
+    public List<EmployeeDto> getAll() {
         List<EmployeeDto> listWithDTOs = repository.findAll().stream()
                 .map(EmployeeDto::new)
                 .collect(Collectors.toList());
         return listWithDTOs;
     }
 
-    public EmployeeDto getById(int id){
+    public EmployeeDto getById(int id) {
         EmployeeDto employeeDTO = new EmployeeDto(repository.findById(id).orElseThrow(RuntimeException::new));
         return employeeDTO;
     }
 
 
-    public int create(Employee employee){
+    public int create(Employee employee) {
         employee.setEmployeeId(0);
 
         repository.save(employee);
         return employee.getEmployeeId();
     }
 
-    public int update(int id, Employee employee){
+    public int update(int id, Employee employee) {
         repository.save(employee);
         return employee.getEmployeeId();
     }
 
-    public void delete(int id){
+    public void delete(int id) {
         repository.delete(repository.findById(id).orElseThrow(RuntimeException::new));
     }
-
-
-
-
-
 
 
 }

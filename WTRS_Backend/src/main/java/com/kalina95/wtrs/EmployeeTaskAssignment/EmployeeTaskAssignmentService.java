@@ -13,11 +13,11 @@ public class EmployeeTaskAssignmentService {
 
     private final EmployeeTaskAssignmentRepository repository;
 
-    public List<EmployeeTaskAssignment> getAll(){
+    public List<EmployeeTaskAssignment> getAll() {
         return repository.findAll();
     }
 
-    public int assignTaskToEmployee(Task task, Employee employee){
+    public int assignTaskToEmployee(Task task, Employee employee) {
         EmployeeTaskAssignment assignment = new EmployeeTaskAssignment();
         assignment.setTask(task);
         assignment.setEmployee(employee);
@@ -26,21 +26,21 @@ public class EmployeeTaskAssignmentService {
         return assignment.getAssignmentId();
     }
 
-    public int changeTask(int assignmentId, Task newTask){
+    public int changeTask(int assignmentId, Task newTask) {
         EmployeeTaskAssignment assignment = repository.findById(assignmentId).orElseThrow(RuntimeException::new);
         assignment.setTask(newTask);
         repository.save(assignment);
         return assignment.getAssignmentId();
     }
 
-    public int changeEmployee(int assignmentId, Employee newEmployee){
+    public int changeEmployee(int assignmentId, Employee newEmployee) {
         EmployeeTaskAssignment assignment = repository.findById(assignmentId).orElseThrow(RuntimeException::new);
         assignment.setEmployee(newEmployee);
         repository.save(assignment);
         return assignment.getAssignmentId();
     }
 
-    public void deleteAssignmentById(int id){
+    public void deleteAssignmentById(int id) {
         repository.deleteById(id);
     }
 

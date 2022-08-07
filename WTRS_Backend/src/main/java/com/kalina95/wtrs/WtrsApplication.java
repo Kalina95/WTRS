@@ -9,14 +9,14 @@ import java.util.TimeZone;
 @SpringBootApplication
 public class WtrsApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WtrsApplication.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(WtrsApplication.class, args);
 
-	}
+    }
 
-	@PostConstruct
-	void started() {
-		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-	}
+    @PostConstruct
+    void started() {
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+    }
 
 }

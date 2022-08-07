@@ -1,6 +1,5 @@
 package com.kalina95.wtrs.task;
 
-import com.kalina95.wtrs.employee.Employee;
 import lombok.Builder;
 
 import java.util.Date;
@@ -14,7 +13,7 @@ public class TaskFilterParameter {
     private Date startOfTask;
     private Date endOfTask;
 
-    public Map<String, ?> parametersToMap(){
+    public Map<String, ?> parametersToMap() {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("name", this.name);
         parameters.put("startOfTask", this.startOfTask);

@@ -12,29 +12,29 @@ public class TaskService {
 
     private final TaskRepository repository;
 
-    public List<TaskDto> getAll(){
+    public List<TaskDto> getAll() {
         List<TaskDto> listOfDTOs = repository.findAll().stream().map(TaskDto::new).collect(Collectors.toList());
         return listOfDTOs;
     }
 
-    public TaskDto getById(int id){
+    public TaskDto getById(int id) {
         TaskDto taskDTO = new TaskDto(repository.findById(id).orElseThrow(RuntimeException::new));
         return taskDTO;
     }
 
-    public int create(Task task){
+    public int create(Task task) {
         task.setTaskid(0);
         repository.save(task);
         return task.getTaskid();
     }
 
-    public int update(int id, Task task){
+    public int update(int id, Task task) {
         task.setTaskid(id);
         repository.save(task);
         return task.getTaskid();
     }
 
-    public void delete(int id){
+    public void delete(int id) {
         repository.delete(repository.findById(id).orElseThrow(RuntimeException::new));
     }
 }

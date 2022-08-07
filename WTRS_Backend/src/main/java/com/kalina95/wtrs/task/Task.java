@@ -3,7 +3,6 @@ package com.kalina95.wtrs.task;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kalina95.wtrs.EmployeeTaskAssignment.EmployeeTaskAssignment;
-import com.kalina95.wtrs.employee.Employee;
 import lombok.*;
 import org.springframework.lang.NonNull;
 

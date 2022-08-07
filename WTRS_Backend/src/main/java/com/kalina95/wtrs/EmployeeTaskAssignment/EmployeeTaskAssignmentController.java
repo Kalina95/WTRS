@@ -19,7 +19,7 @@ public class EmployeeTaskAssignmentController {
 
 
     @GetMapping("/")
-    public ResponseEntity<List<EmployeeTaskAssignment>> getAll(){
+    public ResponseEntity<List<EmployeeTaskAssignment>> getAll() {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
