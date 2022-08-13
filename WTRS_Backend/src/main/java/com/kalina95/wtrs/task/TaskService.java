@@ -29,9 +29,14 @@ public class TaskService {
     }
 
     public int update(int id, Task task) {
-        task.setTaskid(id);
-        repository.save(task);
-        return task.getTaskid();
+        if(repository.findById(id).isPresent()){
+            task.setTaskid(id);
+            repository.save(task);
+            return task.getTaskid();
+        }
+        else{
+            return create(task);
+        }
     }
 
     public void delete(int id) {

@@ -3,15 +3,11 @@ package com.kalina95.wtrs.employee;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kalina95.wtrs.EmployeeTaskAssignment.EmployeeTaskAssignment;
 import com.kalina95.wtrs.user.User;
-import com.kalina95.wtrs.task.Task;
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -39,7 +35,6 @@ public class Employee {
     private String lastName;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDay;
 
     private double grossSalary;

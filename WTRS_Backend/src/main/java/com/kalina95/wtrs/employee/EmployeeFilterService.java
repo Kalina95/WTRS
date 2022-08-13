@@ -1,5 +1,6 @@
 package com.kalina95.wtrs.employee;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -14,10 +15,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class EmployeeFilterService {
 
     @PersistenceContext
-    EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public List<Employee> filter(EmployeeFilterParameter employeeFilterParameter) {
 

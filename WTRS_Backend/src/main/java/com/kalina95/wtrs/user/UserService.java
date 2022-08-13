@@ -29,9 +29,15 @@ public class UserService {
     }
 
     public int update(int id, User user) {
-        user.setUserId(id);
-        repository.save(user);
-        return user.getUserId();
+        if(repository.findById(id).isPresent()){
+            user.setUserId(id);
+            repository.save(user);
+            return user.getUserId();
+        }
+        else{
+            return create(user);
+        }
+
     }
 
     public void delete(int id) {
