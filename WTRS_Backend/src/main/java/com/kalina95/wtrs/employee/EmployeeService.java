@@ -32,9 +32,15 @@ public class EmployeeService {
         return employee.getEmployeeId();
     }
 
-    public int update(int id, Employee employee) {
-        repository.save(employee);
-        return employee.getEmployeeId();
+    public int update(int id, Employee newEmployeeData) {
+        if(repository.findById(id).isPresent()){
+            newEmployeeData.setEmployeeId(id);
+            Employee employeeToSave = repository.save(newEmployeeData);
+            return employeeToSave.getEmployeeId();
+        }
+        else{
+            return create(newEmployeeData);
+        }
     }
 
     public void delete(int id) {
